@@ -1,6 +1,6 @@
 # 基于共享元素与Transition过渡动画实现的音乐播放器动效
 
-####共享元素
+##共享元素
 
 Andriod 5.0及之后，开始支持共享元素动画，该动画主要用于两个页面之间，两个页面可以共享某些控件。
 核心代码，在要共享的控件中加上transitionName属性。
@@ -8,7 +8,7 @@ Andriod 5.0及之后，开始支持共享元素动画，该动画主要用于两
   android:transitionName="@string/square_blue_name"
 ```
 
-####Transition动画
+##Transition动画
 
 | 序号        | 系统Transition          | 内存占用峰值  |
 | :-------: |:-------------:| :-----:| 
