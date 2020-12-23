@@ -38,9 +38,13 @@ import java.util.List;
  */
 public class AlbumViewImpl implements IAlbumView {
 
+    /** 上下文 **/
     private FragmentActivity context;
+    /** view控制器 **/
     private AlbumViewHolder viewHolder;
+    /** 专辑信息 **/
     private AlbumInfo albumInfo;
+    /** 共享元素 元素名 **/
     private final String shareAlbum;
     private final String shareScaleAlbum;
     private final String shareMenu;
@@ -59,6 +63,9 @@ public class AlbumViewImpl implements IAlbumView {
         shareMenuNext = context.getResources().getString(R.string.share_iv_menu_next);
     }
 
+    /**
+     * 跳转专辑列表页面
+     * **/
     @Override
     public void toAlbumListPage() {
         AlbumListFragment albumListFragment = new AlbumListFragment();
@@ -68,6 +75,11 @@ public class AlbumViewImpl implements IAlbumView {
                 .commit();
     }
 
+    /**
+     * 跳转歌曲列表页
+     * @param transitionInfo 动画列表
+     * @param albumInfo 共享专辑信息
+     * **/
     @Override
     public void toSongListPage(TransitionInfo transitionInfo,AlbumInfo albumInfo) {
         this.albumInfo = albumInfo;
@@ -92,6 +104,11 @@ public class AlbumViewImpl implements IAlbumView {
     }
 
 
+    /**
+     * 跳转歌词页面
+     * @param animation 动画列表
+     * @param albumInfo 共享专辑信息
+     * **/
     @Override
     public void toWordsPage(TransitionInfo animation,AlbumInfo albumInfo) {
         this.albumInfo = albumInfo;
@@ -106,9 +123,12 @@ public class AlbumViewImpl implements IAlbumView {
                 .commit();
     }
 
+    /**
+     * 跳转按钮页面
+     * **/
     @Override
     public void toMenuPage(TransitionInfo animation) {
-        MenuFragment menuFragment = MenuFragment.newInstance();
+        MenuFragment menuFragment = new MenuFragment();
         menuFragment.setSharedElementEnterTransition(animation.getSharedElementEnterTransition());
         menuFragment.setSharedElementReturnTransition(animation.getSharedElementEnterTransition());
         context.getSupportFragmentManager().beginTransaction()
@@ -121,6 +141,9 @@ public class AlbumViewImpl implements IAlbumView {
                 .commit();
     }
 
+    /**
+     * 展示中心图片
+     * **/
     @Override
     public void showCenterImage() {
         viewHolder.getIvAlbum().setVisibility(View.VISIBLE);
@@ -130,12 +153,19 @@ public class AlbumViewImpl implements IAlbumView {
         }
     }
 
+    /**
+     * 隐藏中心图片
+     * **/
     @Override
     public void hideCenterImage() {
         viewHolder.getIvAlbum().setVisibility(View.GONE);
         getCurrentRecyclerViewItem().setVisibility(View.VISIBLE);
     }
 
+    /**
+     * 获取当前index
+     * @return 当前index
+     * **/
     @Override
     public int currentSelectItem() {
         return ((DiscreteScrollView)viewHolder.getRecyclerView()).getCurrentItem();

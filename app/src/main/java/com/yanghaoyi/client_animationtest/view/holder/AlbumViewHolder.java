@@ -16,7 +16,6 @@ import com.yanghaoyi.client_animationtest.view.custom.VpRecyView;
  * Version : V 1.0
  */
 public class AlbumViewHolder {
-
     private ImageView ivAlbum;
     private FrameLayout ivMenu;
     private ImageView ivImgPrevious;

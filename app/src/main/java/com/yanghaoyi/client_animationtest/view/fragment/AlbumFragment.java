@@ -50,8 +50,6 @@ public class AlbumFragment extends BaseFragment implements View.OnClickListener 
     private AlbumAdapter albumAdapter;
     /** 专辑逻辑中心 **/
     private AlbumPresenter albumPresenter;
-    /** 专辑数据中心 **/
-    private AlbumModel albumModel;
     /** 专辑View接口 **/
     private IAlbumView albumView;
     /** 专辑视图View控制器 **/
@@ -92,17 +90,6 @@ public class AlbumFragment extends BaseFragment implements View.OnClickListener 
         viewHolder.setIvImgNext(ivImgNext);
         albumView = new AlbumViewImpl(getActivity(),viewHolder);
         scrollView = view.findViewById(R.id.rvAlbumList);
-        albumAdapter = new AlbumAdapter(albumModel.getAlbumList());
-        scrollView.setAdapter(albumAdapter);
-        scrollView.setOffscreenItems(5);
-        scrollView.scrollToPosition(2);
-        viewHolder.setRecyclerView(scrollView);
-    }
-
-    @SuppressLint("UseCompatLoadingForDrawables")
-    @Override
-    protected void initData(){
-        albumModel = new AlbumModel();
     }
 
     @Override
@@ -112,6 +99,11 @@ public class AlbumFragment extends BaseFragment implements View.OnClickListener 
         tvToSongList.setOnClickListener(this);
         fmMenu.setOnClickListener(this);
         tvToWords.setOnClickListener(this);
+        albumAdapter = new AlbumAdapter(albumPresenter.getAlbumList());
+        scrollView.setAdapter(albumAdapter);
+        scrollView.setOffscreenItems(5);
+        scrollView.scrollToPosition(2);
+        viewHolder.setRecyclerView(scrollView);
         scrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -145,5 +137,4 @@ public class AlbumFragment extends BaseFragment implements View.OnClickListener 
     public void showCenterImage(){
         albumView.showCenterImage();
     }
-
 }

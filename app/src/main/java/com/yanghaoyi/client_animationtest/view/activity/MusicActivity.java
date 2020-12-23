@@ -2,7 +2,6 @@ package com.yanghaoyi.client_animationtest.view.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -23,7 +22,6 @@ import com.yanghaoyi.client_animationtest.view.fragment.AlbumFragment;
  */
 public class MusicActivity extends FragmentActivity {
 
-    private FrameLayout fmContent;
     private AlbumFragment albumFragment;
     private TextView tvBack;
 
@@ -41,7 +39,6 @@ public class MusicActivity extends FragmentActivity {
     }
 
     private void initView(){
-        fmContent = findViewById(R.id.fmContent);
         tvBack = findViewById(R.id.tvBack);
         showAlbum();
     }
@@ -69,5 +66,9 @@ public class MusicActivity extends FragmentActivity {
     public void onBackPressed() {
         albumFragment.showCenterImage();
         super.onBackPressed();
+    }
+
+    public void showBackButton(boolean show){
+        tvBack.setVisibility(show?View.VISIBLE:View.GONE);
     }
 }

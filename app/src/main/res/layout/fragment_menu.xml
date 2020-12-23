@@ -5,7 +5,7 @@
 
 
     <FrameLayout
-        android:id="@+id/ivMenu"
+        android:id="@+id/fmMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@mipmap/c_route_bg_left_focused"

@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.yanghaoyi.client_animationtest.presenter.util.AnimationTestUtil;
+import com.yanghaoyi.client_animationtest.view.activity.MusicActivity;
 
 /**
  * @author : YangHaoYi on 2020/12/19.
@@ -22,6 +23,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected static final String ALBUM_INFO = "albumInfo";
     protected static final String EXTRA_SAMPLE = "sample";
+    protected static final String FRAGMENT_ALBUM = "AlbumFragment";
     protected View view;
 
     public abstract int getContentLayout();
@@ -47,4 +49,13 @@ public abstract class BaseFragment extends Fragment {
     protected void initData(){};
     protected void initEvent(){};
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(getClass().getSimpleName().equals(FRAGMENT_ALBUM)){
+            ((MusicActivity)getActivity()).showBackButton(false);
+        }else {
+            ((MusicActivity)getActivity()).showBackButton(true);
+        }
+    }
 }

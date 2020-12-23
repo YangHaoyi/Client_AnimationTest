@@ -143,25 +143,27 @@ public final class GetTransformedIndexUtils {
      * @return
      */
     public static int getTransformedIndexMiddleToEdge(int count, int index){
-        if (count%2==0){
-            if(index+1 == count/2){
-                //1.1:第一中间项
-                return 0;
-            }else {
-                return 1;
-            }
-
-
-        }else{
-            if (index+1 == (count+1)/2){
-                //2.1:中间项
-                return 0;
-            }else {
-                return 1;
-            }
-
-
-
+//        if (count%2==0){
+//            if(index+1 == count/2){
+//                //1.1:第一中间项
+//                return 0;
+//            }else {
+//                return 1;
+//            }
+//
+//
+//        }else{
+//            if (index+1 == (count+1)/2){
+//                //2.1:中间项
+//                return 0;
+//            }else {
+//                return 1;
+//            }
+//        }
+        if(index==0){
+            return 0;
+        }else {
+            return 1;
         }
     }
 

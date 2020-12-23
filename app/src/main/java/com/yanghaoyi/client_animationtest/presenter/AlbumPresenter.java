@@ -35,6 +35,11 @@ public class AlbumPresenter {
         enterTransitionFactory = new EnterTransitionFactory();
     }
 
+    /** 获取专辑信息 **/
+    public List<AlbumInfo> getAlbumList(){
+        return albumModel.getAlbumList();
+    }
+
     /** 跳转专辑列表展示页 **/
     public void toAlbumListPage(){
         albumView.toAlbumListPage();
@@ -43,9 +48,7 @@ public class AlbumPresenter {
     /** 跳转歌曲列表页面 **/
     public void toSongListPage(){
         AlbumInfo albumInfo = albumModel.getAlbumList().get(albumView.currentSelectItem());
-        TransitionInfo transitionInfo = enterTransitionFactory.createTransition(EnterTransitionType.SONG_LIST).produceAnimation();
-        addTransitionListener(transitionInfo);
-        albumView.toSongListPage(transitionInfo,albumInfo);
+        albumView.toSongListPage(enterTransitionFactory.createTransition(EnterTransitionType.SONG_LIST).produceAnimation(),albumInfo);
     }
 
     /** 跳转歌词页面 **/
@@ -57,35 +60,6 @@ public class AlbumPresenter {
     /** 跳转菜单页面 **/
     public void toMenuPage(){
         albumView.toMenuPage(enterTransitionFactory.createTransition(EnterTransitionType.MENU).produceAnimation());
-    }
-
-    private void addTransitionListener(TransitionInfo transitionInfo){
-        transitionInfo.getSharedElementEnterTransition().addListener(new Transition.TransitionListener() {
-            @Override
-            public void onTransitionStart(@NonNull Transition transition) {
-                //no used
-            }
-
-            @Override
-            public void onTransitionEnd(@NonNull Transition transition) {
-                albumView.hideCenterImage();
-            }
-
-            @Override
-            public void onTransitionCancel(@NonNull Transition transition) {
-                //no used
-            }
-
-            @Override
-            public void onTransitionPause(@NonNull Transition transition) {
-                //no used
-            }
-
-            @Override
-            public void onTransitionResume(@NonNull Transition transition) {
-                //no used
-            }
-        });
     }
 
 }
