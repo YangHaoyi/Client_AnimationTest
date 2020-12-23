@@ -126,8 +126,8 @@ public class AlbumViewImpl implements IAlbumView {
         viewHolder.getIvAlbum().setVisibility(View.VISIBLE);
         if(albumInfo!=null){
             viewHolder.getIvAlbum().setBackground(context.getResources().getDrawable(albumInfo.getPicture()));
+            getCurrentRecyclerViewItem().setVisibility(View.GONE);
         }
-        getCurrentRecyclerViewItem().setVisibility(View.GONE);
     }
 
     @Override
