@@ -72,7 +72,7 @@ public class AlbumViewImpl implements IAlbumView {
         context.getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fmContent,albumListFragment)
                 .addToBackStack(null)
-                .commit();
+                .commitAllowingStateLoss();
     }
 
     /**
@@ -120,7 +120,7 @@ public class AlbumViewImpl implements IAlbumView {
                 .replace(R.id.fmContent,wordsFragment)
                 .addToBackStack(null)
                 .addSharedElement(viewHolder.getIvAlbum(),shareScaleAlbum)
-                .commit();
+                .commitAllowingStateLoss();
     }
 
     /**
@@ -138,7 +138,7 @@ public class AlbumViewImpl implements IAlbumView {
                 .addSharedElement(viewHolder.getIvImgPrevious(),shareMenuPrevious)
                 .addSharedElement(viewHolder.getIvImgPause(),shareMenuPause)
                 .addSharedElement(viewHolder.getIvImgNext(),shareMenuNext)
-                .commit();
+                .commitAllowingStateLoss();
     }
 
     /**
