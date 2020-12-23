@@ -22,11 +22,19 @@ Andriod 5.0及之后，开始支持共享元素动画，该动画主要用于两
 | 8 | AutoTransition|    默认动画，ChangeBounds、Fade动画的集合|
 
 ##实现效果
+
 专辑列表
+
 ![image](https://github.com/YangHaoyi/Client_AnimationTest/blob/main/app/gif/%E4%B8%93%E8%BE%91%E5%88%97%E8%A1%A8.gif)
+
 专辑放大
+
 ![image](https://github.com/YangHaoyi/Client_AnimationTest/blob/main/app/gif/%E4%B8%93%E8%BE%91%E6%94%BE%E5%A4%A7.gif)
+
 按钮缩放
+
 ![image](https://github.com/YangHaoyi/Client_AnimationTest/blob/main/app/gif/%E6%8C%89%E9%92%AE%E7%BC%A9%E6%94%BE.gif)
+
 歌曲列表
+
 ![image](https://github.com/YangHaoyi/Client_AnimationTest/blob/main/app/gif/%E6%AD%8C%E6%9B%B2%E5%88%97%E8%A1%A8.gif)
