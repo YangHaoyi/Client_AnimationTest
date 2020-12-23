@@ -1,0 +1,81 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+
+    <FrameLayout
+        android:id="@+id/ivMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/c_route_bg_left_focused"
+        android:transitionName="@string/share_iv_menu" >
+
+        <ImageView
+            android:id="@+id/ivImgPrevious"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom|center_vertical"
+            android:layout_marginBottom="70dp"
+            android:layout_marginLeft="20dp"
+            android:rotation="180"
+            android:src="@mipmap/iv_menu_next"
+            android:transitionName="@string/share_iv_menu_previous"/>
+
+        <ImageView
+            android:id="@+id/ivImgPause"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginBottom="70dp"
+            android:layout_gravity="bottom|center_vertical"
+            android:layout_marginLeft="100dp"
+            android:src="@mipmap/iv_menu_pause"
+            android:transitionName="@string/share_iv_menu_pause"
+            />
+
+        <ImageView
+            android:id="@+id/ivImgNext"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom|center_vertical"
+            android:layout_marginBottom="70dp"
+            android:layout_marginLeft="180dp"
+            android:src="@mipmap/iv_menu_next"
+            android:transitionName="@string/share_iv_menu_next"
+            />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="11111111"
+            android:textColor="#000000"
+            android:layout_marginLeft="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="222222"
+            android:textColor="#000000"
+            android:layout_marginLeft="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="333333"
+            android:textColor="#000000"
+            android:layout_marginLeft="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+
+</FrameLayout>

@@ -1,0 +1,93 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="horizontal">
+
+
+    <ImageView
+        android:layout_marginTop="80dp"
+        android:id="@+id/ivAlbum"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="30dp"
+        android:transitionName="@string/square_blue_name" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <TextView
+            android:text="歌曲列表"
+            android:textColor="#000000"
+            android:layout_marginLeft="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSongList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
+
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--android:layout_width="match_parent"-->
+<!--android:layout_height="match_parent"-->
+<!--android:gravity="center_horizontal|top"-->
+<!--android:orientation="vertical">-->
+
+
+<!--    <ImageView-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        android:id="@+id/ivAlbum"-->
+<!--        android:layout_width="150dp"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:layout_marginLeft="30dp"-->
+<!--        android:transitionName="@string/square_blue_name" />-->
+
+<!--<TextView-->
+<!--    style="@style/Base.TextAppearance.AppCompat.Large"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:layout_alignBottom="@+id/square_blue"-->
+<!--    android:layout_alignTop="@+id/square_blue"-->
+<!--    android:layout_gravity="center_vertical|center_horizontal"-->
+<!--    android:layout_toEndOf="@+id/square_blue"-->
+<!--    android:gravity="center_horizontal|center_vertical"-->
+<!--    android:text="Fragment 2" />-->
+
+
+<!--<TextView-->
+<!--    android:id="@+id/fragment2_body1"-->
+<!--    style="@style/MaterialAnimations.Text.Body"-->
+<!--    android:layout_below="@+id/square_blue"-->
+<!--    android:layout_centerHorizontal="true"-->
+<!--    android:text="蓝色的圈是两个 fragments 的共享元素" />-->
+
+<!--<TextView-->
+<!--    android:id="@+id/fragment2_title"-->
+<!--    style="@style/MaterialAnimations.Text.Body"-->
+<!--    android:textStyle="bold"-->
+<!--    android:layout_below="@+id/fragment2_body1"-->
+<!--    android:text="Overlap" />-->
+
+<!--<TextView-->
+<!--    style="@style/MaterialAnimations.Text.Body"-->
+<!--    android:layout_below="@+id/fragment2_title"-->
+<!--    android:layout_centerHorizontal="true"-->
+<!--    android:text="当为 true 时,这一页的退出 和 下一也的进入 动画 同时开始。 \n当为 false 时, 会等这一页的退出动画完成，才开始前一页的进入动画。" />-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:visibility="gone"-->
+<!--            android:id="@+id/rvSongList"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"/>-->
+
+<!--</RelativeLayout>-->

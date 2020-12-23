@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ff00"
+    tools:context=".view.activity.MainActivity">
+
+    <TextView
+        android:id="@+id/tvToMusic"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Hello World!" />
+
+
+
+
+    <FrameLayout
+        android:id="@+id/fmMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal">
+
+    </FrameLayout>
+
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:gravity="center">-->
+
+<!--        <View-->
+<!--            android:id="@+id/vTopLineLeft"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:layout_toLeftOf="@id/vTopLine"-->
+<!--            android:background="#ff00"-->
+<!--            android:layout_centerHorizontal="true"/>-->
+
+<!--        <View-->
+<!--            android:id="@+id/vTopLine"-->
+<!--            android:layout_width="1dp"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:background="#ff00"-->
+<!--            android:layout_centerHorizontal="true"/>-->
+
+<!--        <View-->
+<!--            android:id="@+id/vTopLineRight"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_toRightOf="@id/vTopLine"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:background="#ff00"-->
+<!--            android:layout_centerHorizontal="true"/>-->
+
+
+<!--        <View-->
+<!--            android:id="@+id/vLeft"-->
+<!--            android:layout_width="1dp"-->
+<!--            android:layout_height="20dp"-->
+<!--            android:layout_alignStart="@+id/vTopLineLeft"-->
+<!--            android:background="#ff00"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/ivMenuLeft"-->
+<!--            android:layout_width="10dp"-->
+<!--            android:layout_height="10dp"-->
+<!--            android:layout_below="@+id/vLeft"-->
+<!--            android:layout_alignStart="@+id/vTopLineLeft"-->
+<!--            android:background="#ff00"/>-->
+
+<!--        <View-->
+<!--            android:id="@+id/vRight"-->
+<!--            android:layout_width="1dp"-->
+<!--            android:layout_height="20dp"-->
+<!--            android:layout_alignEnd="@+id/vTopLineRight"-->
+<!--            android:background="#ff00"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/ivMenuRight"-->
+<!--            android:layout_width="1dp"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:layout_below="@+id/vRight"-->
+<!--            android:layout_alignEnd="@+id/vTopLineRight"-->
+<!--            android:background="#ff00"/>-->
+
+
+
+
+
+<!--    </RelativeLayout>-->
+
+
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center">-->
+
+
+<!--        <View-->
+<!--            android:id="@+id/vLeft"-->
+<!--            android:layout_width="1dp"-->
+<!--            android:layout_height="20dp"-->
+<!--            android:layout_above="@+id/ivMenuLeft"-->
+<!--            android:background="#ff00"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/ivMenuLeft"-->
+<!--            android:layout_width="10dp"-->
+<!--            android:layout_height="10dp"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:src="@drawable/cpm_button_bg_n_normal"-->
+<!--            android:background="#ff00"/>-->
+
+<!--    </RelativeLayout>-->
+
+
+
+
+    <ImageView
+        android:id="@+id/ivMenuLeft"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_launcher_foreground"
+        android:layout_gravity="center" />
+
+
+
+
+</FrameLayout>

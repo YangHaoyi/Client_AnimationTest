@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Client_AnimationTest</string>
+    <string name="transition_album">transition_album</string>
+    <string name="square_blue_name">square_blue</string>
+    <string name="share_iv_menu">share_iv_menu</string>
+    <string name="share_iv_menu_previous">share_iv_menu_previous</string>
+    <string name="share_iv_menu_pause">share_iv_menu_pause</string>
+    <string name="share_iv_menu_next">share_iv_menu_next</string>
+</resources>
