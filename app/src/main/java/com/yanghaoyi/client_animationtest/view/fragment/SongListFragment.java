@@ -22,9 +22,13 @@ import com.yanghaoyi.client_animationtest.R;
 import com.yanghaoyi.client_animationtest.model.bean.AlbumInfo;
 import com.yanghaoyi.client_animationtest.model.bean.SongInfo;
 import com.yanghaoyi.client_animationtest.presenter.SongListPresenter;
+import com.yanghaoyi.client_animationtest.presenter.evnet.ImageChangeEvent;
 import com.yanghaoyi.client_animationtest.view.adapter.SongListAdapter;
 import com.yanghaoyi.client_animationtest.view.fragment.base.BaseFragment;
 
+import org.greenrobot.eventbus.EventBus;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,17 +42,21 @@ import java.util.List;
 public class SongListFragment extends BaseFragment {
 
     public static final String EXTRA_SAMPLE = "sample";
+    public static final String INDEX = "index";
     private AlbumInfo albumInfo;
     private ImageView ivAlbum;
     private RecyclerView rvSongList;
     private SongListAdapter songListAdapter;
     private SongListPresenter presenter;
     private List<SongInfo> songInfoList;
+    private List<AlbumInfo> albumInfoList;
+    private int currentIndex;
 
-    public static SongListFragment newInstance(AlbumInfo albumInfo) {
+    public static SongListFragment newInstance(List<AlbumInfo> albumInfo,int currentIndex) {
         SongListFragment fragment = new SongListFragment();
         Bundle args = new Bundle();
-        args.putSerializable(EXTRA_SAMPLE, albumInfo);
+        args.putSerializable(EXTRA_SAMPLE, (Serializable) albumInfo);
+        args.putInt(INDEX, currentIndex);
         fragment.setArguments(args);
         return fragment;
     }
@@ -71,8 +79,24 @@ public class SongListFragment extends BaseFragment {
 
     @Override
     protected void initData(){
-        albumInfo =(AlbumInfo) getArguments().getSerializable(EXTRA_SAMPLE);
+        albumInfoList = (List<AlbumInfo>) getArguments().getSerializable(EXTRA_SAMPLE);
+        currentIndex = getArguments().getInt(INDEX);
+        albumInfo = albumInfoList.get(currentIndex);
         presenter = new SongListPresenter();
         songInfoList = presenter.getSongList();
+    }
+
+    @Override
+    protected void initEvent() {
+        super.initEvent();
+        songListAdapter.setItemClickListener(new SongListAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                ivAlbum.setBackground(getActivity().getResources().getDrawable(albumInfoList.get(position).getPicture()));
+                ImageChangeEvent imageChangeEvent = new ImageChangeEvent();
+                imageChangeEvent.setPosition(position);
+                EventBus.getDefault().post(imageChangeEvent);
+            }
+        });
     }
 }

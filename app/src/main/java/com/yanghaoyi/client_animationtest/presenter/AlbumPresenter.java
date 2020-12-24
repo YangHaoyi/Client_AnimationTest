@@ -47,14 +47,16 @@ public class AlbumPresenter {
 
     /** 跳转歌曲列表页面 **/
     public void toSongListPage(){
-        AlbumInfo albumInfo = albumModel.getAlbumList().get(albumView.currentSelectItem());
-        albumView.toSongListPage(enterTransitionFactory.createTransition(EnterTransitionType.SONG_LIST).produceAnimation(),albumInfo);
+        albumView.toSongListPage(enterTransitionFactory.createTransition(EnterTransitionType.SONG_LIST).produceAnimation(),
+                albumModel.getAlbumList(),
+                albumView.currentSelectItem());
     }
 
     /** 跳转歌词页面 **/
     public void toWordsPage(){
-        AlbumInfo albumInfo = albumModel.getAlbumList().get(albumView.currentSelectItem());
-        albumView.toWordsPage(enterTransitionFactory.createTransition(EnterTransitionType.WORDS).produceAnimation(),albumInfo);
+        albumView.toWordsPage(enterTransitionFactory.createTransition(EnterTransitionType.WORDS).produceAnimation(),
+                albumModel.getAlbumList(),
+                albumView.currentSelectItem());
     }
 
     /** 跳转菜单页面 **/

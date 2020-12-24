@@ -3,6 +3,8 @@ package com.yanghaoyi.client_animationtest.view;
 import com.yanghaoyi.client_animationtest.model.bean.AlbumInfo;
 import com.yanghaoyi.client_animationtest.model.bean.TransitionInfo;
 
+import java.util.List;
+
 /**
  * @author : YangHaoYi on 2020/12/22.
  * Email  :  yang.haoyi@qq.com
@@ -21,15 +23,17 @@ public interface IAlbumView {
      * 跳转歌曲列表页
      * @param animation 动画列表
      * @param albumInfo 共享专辑信息
+     * @param currentIndex 当前选择
      * **/
-    void toSongListPage(TransitionInfo animation, AlbumInfo albumInfo);
+    void toSongListPage(TransitionInfo animation, List<AlbumInfo> albumInfo,int currentIndex);
 
     /**
      * 跳转歌词页面
      * @param animation 动画列表
-     * @param albumInfo 共享专辑信息
+     * @param albumInfoList 共享专辑信息
+     * @param currentIndex 当前选择
      * **/
-    void toWordsPage(TransitionInfo animation, AlbumInfo albumInfo);
+    void toWordsPage(TransitionInfo animation, List<AlbumInfo> albumInfoList,int currentIndex);
 
     /**
      * 跳转按钮页面
@@ -51,4 +55,9 @@ public interface IAlbumView {
      * @return 当前index
      * **/
     int currentSelectItem();
+
+    /**
+     * 此次显示与上一次隐藏的index不同，显示上一次隐藏的index
+     * **/
+    void showLastHideItem(int currentIndex);
 }

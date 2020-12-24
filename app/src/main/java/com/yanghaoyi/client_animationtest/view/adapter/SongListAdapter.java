@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,9 +26,14 @@ public class SongListAdapter extends  RecyclerView.Adapter<SongListAdapter.ViewH
 
     private List<SongInfo> songInfoList;
     private Context context;
+    private ItemClickListener itemClickListener;
 
     public SongListAdapter(List<SongInfo> songInfoList) {
         this.songInfoList = songInfoList;
+    }
+
+    public void setItemClickListener(ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
     }
 
     @NonNull
@@ -43,6 +49,14 @@ public class SongListAdapter extends  RecyclerView.Adapter<SongListAdapter.ViewH
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         SongInfo songInfo = songInfoList.get(position);
         holder.tvSongName.setText(songInfo.getName());
+        holder.fmItemContent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(null!=itemClickListener){
+                    itemClickListener.onItemClick(position);
+                }
+            }
+        });
     }
 
     @Override
@@ -52,10 +66,16 @@ public class SongListAdapter extends  RecyclerView.Adapter<SongListAdapter.ViewH
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvSongName;
+        FrameLayout fmItemContent;
         public ViewHolder (View view) {
             super(view);
             tvSongName = (TextView) view.findViewById(R.id.tvSongName);
+            fmItemContent = (FrameLayout) view.findViewById(R.id.fmItemContent);
         }
+    }
+
+    public interface ItemClickListener{
+        void onItemClick(int position);
     }
 
 }

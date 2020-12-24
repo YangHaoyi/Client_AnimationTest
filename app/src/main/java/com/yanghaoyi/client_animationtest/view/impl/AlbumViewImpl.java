@@ -43,7 +43,8 @@ public class AlbumViewImpl implements IAlbumView {
     /** view控制器 **/
     private AlbumViewHolder viewHolder;
     /** 专辑信息 **/
-    private AlbumInfo albumInfo;
+    private List<AlbumInfo> albumInfoList;
+    private int hideIndex = -1;
     /** 共享元素 元素名 **/
     private final String shareAlbum;
     private final String shareScaleAlbum;
@@ -78,13 +79,14 @@ public class AlbumViewImpl implements IAlbumView {
     /**
      * 跳转歌曲列表页
      * @param transitionInfo 动画列表
-     * @param albumInfo 共享专辑信息
+     * @param albumInfoList 共享专辑信息
      * **/
     @Override
-    public void toSongListPage(TransitionInfo transitionInfo,AlbumInfo albumInfo) {
-        this.albumInfo = albumInfo;
+    public void toSongListPage(TransitionInfo transitionInfo,List<AlbumInfo> albumInfoList,int currentIndex) {
+        this.albumInfoList = albumInfoList;
+        this.hideIndex = currentIndex;
         showCenterImage();
-        SongListFragment songListFragment = SongListFragment.newInstance(albumInfo);
+        SongListFragment songListFragment = SongListFragment.newInstance(albumInfoList,currentIndex);
         songListFragment.setEnterTransition(transitionInfo.getEnterTransition());
         songListFragment.setAllowEnterTransitionOverlap(true);
         songListFragment.setAllowReturnTransitionOverlap(false);
@@ -107,13 +109,15 @@ public class AlbumViewImpl implements IAlbumView {
     /**
      * 跳转歌词页面
      * @param animation 动画列表
-     * @param albumInfo 共享专辑信息
+     * @param albumInfoList 共享专辑信息
+     * @param currentIndex 当前选择
      * **/
     @Override
-    public void toWordsPage(TransitionInfo animation,AlbumInfo albumInfo) {
-        this.albumInfo = albumInfo;
+    public void toWordsPage(TransitionInfo animation,List<AlbumInfo> albumInfoList,int currentIndex) {
+        this.albumInfoList = albumInfoList;
+        this.hideIndex = currentIndex;
         showCenterImage();
-        WordsFragment wordsFragment = WordsFragment.newInstance(albumInfo);
+        WordsFragment wordsFragment = WordsFragment.newInstance(albumInfoList,currentIndex);
         wordsFragment.setSharedElementEnterTransition(animation.getSharedElementEnterTransition());
         wordsFragment.setSharedElementReturnTransition(animation.getSharedElementEnterTransition());
         context.getSupportFragmentManager().beginTransaction()
@@ -147,8 +151,8 @@ public class AlbumViewImpl implements IAlbumView {
     @Override
     public void showCenterImage() {
         viewHolder.getIvAlbum().setVisibility(View.VISIBLE);
-        if(albumInfo!=null){
-            viewHolder.getIvAlbum().setBackground(context.getResources().getDrawable(albumInfo.getPicture()));
+        if(albumInfoList!=null){
+            viewHolder.getIvAlbum().setBackground(context.getResources().getDrawable(albumInfoList.get(currentSelectItem()).getPicture()));
             getCurrentRecyclerViewItem().setVisibility(View.GONE);
         }
     }
@@ -169,6 +173,16 @@ public class AlbumViewImpl implements IAlbumView {
     @Override
     public int currentSelectItem() {
         return ((DiscreteScrollView)viewHolder.getRecyclerView()).getCurrentItem();
+    }
+
+    @Override
+    public void showLastHideItem(int currentIndex) {
+        if (hideIndex != -1 && currentIndex != hideIndex) {
+            getCurrentRecyclerViewItem().setVisibility(View.GONE);
+            viewHolder.getIvAlbum().setBackground(context.getResources().getDrawable(albumInfoList.get(currentSelectItem()).getPicture()));
+            View view = ((DiscreteScrollView) viewHolder.getRecyclerView()).getViewHolder(hideIndex).itemView;
+            view.findViewById(R.id.tvAlbumName).setVisibility(View.VISIBLE);
+        }
     }
 
     /**

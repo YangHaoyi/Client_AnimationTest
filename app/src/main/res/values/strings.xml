@@ -6,4 +6,6 @@
     <string name="share_iv_menu_previous">share_iv_menu_previous</string>
     <string name="share_iv_menu_pause">share_iv_menu_pause</string>
     <string name="share_iv_menu_next">share_iv_menu_next</string>
+    <string name="words_already_first">已经是第一个</string>
+    <string name="words_already_last">已经是最后个</string>
 </resources>

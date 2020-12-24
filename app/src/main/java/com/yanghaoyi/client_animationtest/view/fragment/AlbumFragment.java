@@ -1,6 +1,5 @@
 package com.yanghaoyi.client_animationtest.view.fragment;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,15 +8,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yanghaoyi.client_animationtest.R;
-import com.yanghaoyi.client_animationtest.model.AlbumModel;
 import com.yanghaoyi.client_animationtest.model.bean.AlbumInfo;
 import com.yanghaoyi.client_animationtest.presenter.AlbumPresenter;
+import com.yanghaoyi.client_animationtest.presenter.evnet.ImageChangeEvent;
 import com.yanghaoyi.client_animationtest.view.IAlbumView;
 import com.yanghaoyi.client_animationtest.view.adapter.AlbumAdapter;
 import com.yanghaoyi.client_animationtest.view.fragment.base.BaseFragment;
 import com.yanghaoyi.client_animationtest.view.holder.AlbumViewHolder;
 import com.yanghaoyi.client_animationtest.view.impl.AlbumViewImpl;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import static com.yanghaoyi.client_animationtest.presenter.util.AnimationConstants.SELECT_NONE;
 
 /**
  * @author : YangHaoYi on 2020/12/16.
@@ -94,6 +98,7 @@ public class AlbumFragment extends BaseFragment implements View.OnClickListener 
 
     @Override
     protected void initEvent(){
+        EventBus.getDefault().register(this);
         albumPresenter = new AlbumPresenter(albumView);
         tvToAlbumList.setOnClickListener(this);
         tvToSongList.setOnClickListener(this);
@@ -103,6 +108,7 @@ public class AlbumFragment extends BaseFragment implements View.OnClickListener 
         scrollView.setAdapter(albumAdapter);
         scrollView.setOffscreenItems(5);
         scrollView.scrollToPosition(2);
+        currentSelect = 2;
         viewHolder.setRecyclerView(scrollView);
         scrollView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -136,5 +142,29 @@ public class AlbumFragment extends BaseFragment implements View.OnClickListener 
     /** 展示中心图片 **/
     public void showCenterImage(){
         albumView.showCenterImage();
+    }
+
+    private int currentSelect = SELECT_NONE;
+
+    @Subscribe
+    public void onEventChangeSelect(ImageChangeEvent event){
+        currentSelect = event.getPosition();
+        showCenterImage();
+    }
+
+    @Override
+    public void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
+    }
+
+    @Override
+    public void onResume() {
+        if(null!=scrollView&&currentSelect!=-1){
+            scrollView.scrollToPosition(currentSelect);
+            albumView.showLastHideItem(currentSelect);
+            currentSelect = -1;
+        }
+        super.onResume();
     }
 }
