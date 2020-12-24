@@ -32,6 +32,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.widget.NumberPicker.OnScrollListener.SCROLL_STATE_IDLE;
+
 /**
  * @author : YangHaoYi on 2020/12/16.
  * Email  :  yang.haoyi@qq.com
@@ -96,6 +98,22 @@ public class SongListFragment extends BaseFragment {
                 ImageChangeEvent imageChangeEvent = new ImageChangeEvent();
                 imageChangeEvent.setPosition(position);
                 EventBus.getDefault().post(imageChangeEvent);
+            }
+        });
+        rvSongList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if(newState == SCROLL_STATE_IDLE){
+                    recyclerView.setVerticalFadingEdgeEnabled(false);
+                } else {
+                    recyclerView.setVerticalFadingEdgeEnabled(true);
+                }
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
             }
         });
     }
