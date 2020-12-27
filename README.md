@@ -10,7 +10,7 @@ Andriod 5.0及之后，开始支持共享元素动画，该动画主要用于两
 
 ##Transition动画
 
-| 序号        | 系统Transition          | 内存占用峰值  |
+| 序号        | 系统Transition          | 简介  |
 | :-------: |:-------------:| :-----:| 
 | 1    | ChangeBounds | 检测View的位置边界创建移动和缩放动画(关注布局边界的变化) |
 | 2    | ChangeTransform| 检测View的scale和rotation创建缩放和旋转动画(关注scale和ratation的变化) |  
