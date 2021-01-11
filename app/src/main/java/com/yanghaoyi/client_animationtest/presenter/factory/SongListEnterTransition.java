@@ -21,7 +21,7 @@ import static androidx.transition.TransitionSet.ORDERING_TOGETHER;
  */
 public class SongListEnterTransition implements IEnterTransition{
 
-    private static final int DURATION = 1500;
+    private static final int DURATION = 1000;
 
     @Override
     public TransitionInfo produceAnimation() {

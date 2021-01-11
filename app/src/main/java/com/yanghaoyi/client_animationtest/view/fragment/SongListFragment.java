@@ -100,21 +100,22 @@ public class SongListFragment extends BaseFragment {
                 EventBus.getDefault().post(imageChangeEvent);
             }
         });
-        rvSongList.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                if(newState == SCROLL_STATE_IDLE){
-                    recyclerView.setVerticalFadingEdgeEnabled(false);
-                } else {
-                    recyclerView.setVerticalFadingEdgeEnabled(true);
-                }
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-            }
-        });
+//        rvSongList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+//                super.onScrollStateChanged(recyclerView, newState);
+//                if(newState == SCROLL_STATE_IDLE){
+//                    recyclerView.setVerticalFadingEdgeEnabled(false);
+//                } else {
+//                    recyclerView.setVerticalFadingEdgeEnabled(true);
+//                }
+//            }
+//
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//            }
+//        });
+//        rvSongList.setVerticalFadingEdgeEnabled(true);
     }
 }
